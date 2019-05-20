@@ -286,8 +286,8 @@ void SetLEDThreadFunc(void const * argument)
         && osRecursiveMutexWait(LEDRecursiveMutexHandle, osWaitForever) == osOK) {
       HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_SET);
       osDelay(1000);
-      osMutexRelease(LEDRecursiveMutexHandle);
-      osMutexRelease(LEDRecursiveMutexHandle);
+      osRecursiveMutexRelease(LEDRecursiveMutexHandle);
+      osRecursiveMutexRelease(LEDRecursiveMutexHandle);
       osThreadYield();
     }
   }
@@ -311,8 +311,8 @@ void ResetLEDThreadFunc(void const * argument)
         && osRecursiveMutexWait(LEDRecursiveMutexHandle, osWaitForever) == osOK) {
       HAL_GPIO_WritePin(LD2_GPIO_Port, LD2_Pin, GPIO_PIN_RESET);
       osDelay(1000);
-      osMutexRelease(LEDRecursiveMutexHandle);
-      osMutexRelease(LEDRecursiveMutexHandle);
+      osRecursiveMutexRelease(LEDRecursiveMutexHandle);
+      osRecursiveMutexRelease(LEDRecursiveMutexHandle);
       osThreadYield();
     }
   }
