@@ -274,7 +274,8 @@ void StartDefaultTask(void const * argument)
   for(;;)
   {
     osEvent event = osSignalWait(0b0001, osWaitForever);
-    if (event.status == osEventSignal) {
+    if (event.status == osEventSignal
+        && event.value.signals == 0b0001) {
       HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
     }
   }
